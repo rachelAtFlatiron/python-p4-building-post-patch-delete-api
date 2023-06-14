@@ -31,7 +31,8 @@ class Game(db.Model, SerializerMixin):
         # users is a proxy attribute
         # allows us to access and manipulate user attribute associated with Review objects
         # lambda creates new Review object with the given user
-    users = association_proxy('reviews', 'user', creator = lambda usr: Review(user=usr))
+    #users = association_proxy('reviews', 'user', creator = lambda usr: Review(user=usr))
+    users = association_proxy('reviews', 'user')
 
     #serializers
         # -reviews.game to avoid repeating information
@@ -84,7 +85,8 @@ class User(db.Model, SerializerMixin):
         # users is a proxy attribute
         # allows us to access and manipulate user attribute associated with Review objects
         # lambda creates new Review object with the given user
-    games = association_proxy('reviews', 'game', creator = lambda gm: Review(game = gm))
+    #games = association_proxy('reviews', 'game', creator = lambda gm: Review(game = gm))
+    games = association_proxy('reviews', 'game')
     
     # serializers
         # -reviews.user to avoid repeating information
