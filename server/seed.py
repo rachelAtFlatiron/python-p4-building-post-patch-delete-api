@@ -96,7 +96,8 @@ with app.app_context():
             r = Review(
                 score=randint(0, 10),
                 comment=fake.sentence(),
-                user=u,
+                #make sure to use entire instance of u, not just u.id, in order for relationships to work
+                user=u, 
                 game=rc(games))
             reviews.append(r)
 
